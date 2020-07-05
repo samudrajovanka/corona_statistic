@@ -1,0 +1,46 @@
+.container {
+    margin-top: 25px;
+}
+
+.container>h1 {
+    margin-bottom: 25px;
+}
+
+.container button {
+    width: 100%;
+}
+
+.container .row .col-4 {
+    border-left: #545454 solid 3px;
+}
+
+.clock .date-time {
+    padding-top: 15px;
+    font-size: 1.5em;
+}
+
+#header-confirmed {
+    background-color: #ffeeba;
+}
+
+#header-deaths {
+    background-color: #f5c6cb;
+}
+
+#header-recovered {
+    background-color: #c3e6cb;
+}
+
+@media (max-width: 998px) {
+
+    #article,
+    #aside {
+        flex: none;
+        max-width: none;
+    }
+
+    #aside {
+        margin-top: 15px;
+        border-left: none;
+    }
+}
