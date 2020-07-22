@@ -1,7 +1,10 @@
 import $ from "jquery";
 
+function numberWithPoint(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 class dataSource {
-    // baseURL = "https://covid19.mathdro.id/api";
 
     static getGlobalData() {
         return fetch("https://covid19.mathdro.id/api")
@@ -13,10 +16,14 @@ class dataSource {
                 const month = responseJson.lastUpdate.substring(5, 7);
                 const year = responseJson.lastUpdate.substring(0, 4)
 
+                const confirmed = numberWithPoint(responseJson.confirmed.value);
+                const death = numberWithPoint(responseJson.deaths.value);
+                const recovered = numberWithPoint(responseJson.recovered.value);
+
                 $("#global-time-update").text(`Data per tanggal ${date}-${month}-${year}`);
-                $("#global-confirmed-value").text(`${responseJson.confirmed.value}`);
-                $("#global-deaths-value").text(`${responseJson.deaths.value}`);
-                $("#global-recovered-value").text(`${responseJson.recovered.value}`);
+                $("#global-confirmed-value").text(`${confirmed}`);
+                $("#global-deaths-value").text(`${death}`);
+                $("#global-recovered-value").text(`${recovered}`);
             })
             .catch(error => {
                 alert(error);
@@ -29,14 +36,18 @@ class dataSource {
                 return response.json();
             })
             .then(responseJson => {
+                const confirmedCountry1 = numberWithPoint(responseJson[0].confirmed);
+                const confirmedCountry2 = numberWithPoint(responseJson[1].confirmed);
+                const confirmedCountry3 = numberWithPoint(responseJson[2].confirmed);
+
                 $("#country_1").text(`${responseJson[0].countryRegion}`)
-                $("#country_1_confirmed").text(`${responseJson[0].confirmed}`)
+                $("#country_1_confirmed").text(`${confirmedCountry1}`)
 
                 $("#country_2").text(`${responseJson[1].countryRegion}`)
-                $("#country_2_confirmed").text(`${responseJson[1].confirmed}`)
+                $("#country_2_confirmed").text(`${confirmedCountry2}`)
 
                 $("#country_3").text(`${responseJson[2].countryRegion}`)
-                $("#country_3_confirmed").text(`${responseJson[2].confirmed}`)
+                $("#country_3_confirmed").text(`${confirmedCountry3}`)
 
             })
             .catch(error => {

@@ -1,17 +1,17 @@
-.container {
+.container-sm {
     margin-top: 25px;
 }
 
-.container>h1 {
+.container-sm>h1 {
     margin-bottom: 25px;
 }
 
-.container button {
+.container-sm button {
     width: 100%;
 }
 
-.container .row .col-4 {
-    border-left: #545454 solid 3px;
+.container-sm .row .col-4 {
+    border-left: 3px #f0eded solid;
 }
 
 .clock .date-time {
@@ -33,14 +33,46 @@
 
 @media (max-width: 998px) {
 
+    #input-country,
+    #btn-search,
     #article,
     #aside {
         flex: none;
         max-width: none;
     }
 
+    #btn-search {
+        margin-top: 10px;
+    }
+
     #aside {
         margin-top: 15px;
         border-left: none;
+        border-top: 3px #f0eded solid;
+        padding-top: 15px;
+    }
+
+    #aside h3 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 769px) {
+    .clock {
+        flex: none;
+    }
+
+    .clock .date-time {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 429px) {
+    #header h1 {
+        font-size: 1.5em;
+    }
+
+    #header p {
+        font-size: 1em;
     }
 }

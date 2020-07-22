@@ -20,12 +20,12 @@ class SearchBar extends HTMLElement {
     render() {
         this.innerHTML = `
         <form>
-            <div class="row">
-                <div class="col-10">
+            <div class="row search-bar">
+                <div class="col-10" id="input-country">
                     <input class="form-control mr-sm-2" type="search" id="searchElement" placeholder="Search Country"
                         aria-label="Search">
                 </div>
-                <div class="col">
+                <div class="col" id="btn-search">
                     <button class="btn btn-success my-2 my-sm-0" id="searchButtonElement" type="submit">Search</button>
                 </div>
             </div>

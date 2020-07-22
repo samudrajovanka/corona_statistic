@@ -14,32 +14,36 @@ class DataCountry extends HTMLElement {
         const month = this._values.lastUpdate.substring(5, 7);
         const year = this._values.lastUpdate.substring(0, 4)
 
+        const confirmed = this.numberWithPoint(this._values.confirmed.value);
+        const death = this.numberWithPoint(this._values.deaths.value);
+        const recovered = this.numberWithPoint(this._values.recovered.value);
+
         this.innerHTML = `
             <h3 class="mt-4 mb-4 text-center text-capitalize">${this._country}</h3>
                 <div class="card-deck">
                     <div class="card">
                         <h5 class="card-header text-center" id="header-confirmed">Terkonfirmasi</h5>
                         <div class="card-body">
-                            <p class="card-text text-center" id="country-confirmed-value">${this._values.confirmed.value}</p>
-                        </div>
-                    </div>
+                            <p class="card-text text-center" id="country-confirmed-value">${confirmed}</p>
+                        </div >
+                    </div >
 
-                    <div class="card">
-                        <h5 class="card-header text-center" id="header-deaths">Meninggal</h5>
-                        <div class="card-body">
-                            <p class="card-text text-center" id="country-deaths-value">${this._values.deaths.value}</p>
-                        </div>
-                    </div>
+    <div class="card">
+        <h5 class="card-header text-center" id="header-deaths">Meninggal</h5>
+        <div class="card-body">
+            <p class="card-text text-center" id="country-deaths-value">${death}</p>
+        </div>
+    </div>
 
-                    <div class="card">
-                        <h5 class="card-header text-center" id="header-recovered">Sembuh</h5>
-                        <div class="card-body">
-                            <p class="card-text text-center" id="country-recovered-value">${this._values.recovered.value}</p>
-                        </div>
+    <div class="card">
+        <h5 class="card-header text-center" id="header-recovered">Sembuh</h5>
+        <div class="card-body">
+            <p class="card-text text-center" id="country-recovered-value">${recovered}</p>
+        </div>
 
-                    </div>
-                </div>
-            <h6 class="mt-3">Terakhir diperbarui: ${date}-${month}-${year}</h6>`;
+    </div>
+                </div >
+    <h6 class="mt-3">Terakhir diperbarui: ${date}-${month}-${year}</h6>`;
     }
 
     renderError(message) {
@@ -47,15 +51,19 @@ class DataCountry extends HTMLElement {
         this.innerHTML += `
         <style>
             .placeholder {
-                font-weight: lighter;
+                font- weight: lighter;
+                -webkit - user - select: none;
                 color: rgba(0, 0, 0, 0.5);
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
+                -ms - user - select: none;
+                -moz - user - select: none;
+                user - select: none;
             }
-        </style>
+        </style >
         <h2 class="placeholder mt-4">${message}</h2>`
+    }
+
+    numberWithPoint(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 }
 
